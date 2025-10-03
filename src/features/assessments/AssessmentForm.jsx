@@ -14,7 +14,6 @@ export default function AssessmentForm({ assessmentId, candidateId }) {
   };
 
   const handleSubmit = () => {
-    // simple required validation
     for (const sec of assessment.sections) {
       for (const q of sec.questions) {
         if (!answers[q.id]) return alert(`Please answer: ${q.label}`);

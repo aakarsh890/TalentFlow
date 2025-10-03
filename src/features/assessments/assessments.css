@@ -1,6 +1,3 @@
-/* assessments.css — dark dashboard styling for your existing markup */
-
-/* page wrapper (if parent uses full background) */
 body, .builder-page {
   background: linear-gradient(180deg, #071020 0%, #081223 100%);
   color: #e6eef8;

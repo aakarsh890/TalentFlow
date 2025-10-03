@@ -1,4 +1,3 @@
-// JobsBoard.jsx
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchJobs, reorderJobs, toggleArchiveJob } from "./jobsSlice";

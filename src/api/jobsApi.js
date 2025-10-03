@@ -1,4 +1,3 @@
-// mock in-memory API
 let jobs = [
   { id: 1, title: "Frontend Developer", slug: "frontend-developer", tags: ["React","CSS"], archived: false },
   { id: 2, title: "Backend Developer", slug: "backend-developer", tags: ["Node.js","MongoDB"], archived: false },

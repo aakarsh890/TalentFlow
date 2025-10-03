@@ -1,15 +1,13 @@
-// App.jsx  (replace file contents)
 import React from "react";
 import { Provider } from "react-redux";
-import { HashRouter, Link } from "react-router-dom"; // ✅ Use HashRouter for safe deploys
+import { HashRouter, Link } from "react-router-dom"; 
 import store from "./store";
 import AppRouter from "./routes/AppRouter";
-// keep your global.css import if you want (won't conflict with inline styles)
 import "./styles/global.css";
 
 const Navbar = () => {
   const navStyle = {
-    background: "#0b1220", // deep dark
+    background: "#0b1220",
     borderBottom: "1px solid rgba(255,255,255,0.03)",
     padding: "14px 28px",
     display: "flex",
@@ -56,12 +54,10 @@ const Navbar = () => {
 
   return (
     <nav style={navStyle}>
-      {/* Logo / Brand */}
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         <h1 style={logoStyle}>TalentFlow</h1>
       </div>
 
-      {/* Links */}
       <div style={linksWrap}>
         <Link
           to="/jobs"

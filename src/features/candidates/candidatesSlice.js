@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as candidatesApi from "../../api/candidatesApi";
 
-// Async actions
 export const fetchCandidates = createAsyncThunk("candidates/fetch", async () => {
   return await candidatesApi.getCandidates();
 });
@@ -29,7 +28,6 @@ const candidatesSlice = createSlice({
       })
       .addCase(fetchCandidates.fulfilled, (state, action) => {
         state.status = "succeeded";
-        // handle both axios-style {data: [...] } and direct array responses
         state.list = Array.isArray(action.payload?.data) ? action.payload.data : action.payload || [];
       })
       .addCase(fetchCandidates.rejected, (state, action) => {

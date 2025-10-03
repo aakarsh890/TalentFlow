@@ -1,14 +1,8 @@
-// src/api/candidatesApi.js
-// Simple front-end mock API for candidates backed by localStorage.
-// Exports named functions: getCandidates, getCandidate, updateCandidate, addNoteToCandidate
-
 const STORAGE_KEY = "mock_candidates_v1";
 const SIMULATED_DELAY = 250; // ms
 
-// Utility: sleep
 const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
 
-// Utility: basic id generator
 const uid = (prefix = "c") => `${prefix}_${Math.random().toString(36).slice(2, 9)}`;
 
 // Seed some sample candidates (only used when localStorage is empty)
@@ -90,7 +84,6 @@ function writeStore(list) {
 export async function getCandidates() {
   await sleep(SIMULATED_DELAY);
   const data = readStore() ?? [];
-  // return array
   return data;
 }
 
@@ -106,7 +99,6 @@ export async function updateCandidate(id, patch = {}) {
   const list = readStore() ?? [];
   const idx = list.findIndex((c) => String(c.id) === String(id));
   if (idx === -1) {
-    // for robustness, return null if not found
     return null;
   }
   const now = new Date().toISOString();
@@ -134,11 +126,9 @@ export async function addNoteToCandidate(id, noteText, author = "web_user") {
     createdAt: now,
   };
 
-  // Append note
   const candidate = { ...list[idx] };
   candidate.notes = Array.isArray(candidate.notes) ? [...candidate.notes, note] : [note];
 
-  // Also add a timeline entry for note (optional)
   const tl = {
     id: uid("t"),
     type: "note",
@@ -155,7 +145,7 @@ export async function addNoteToCandidate(id, noteText, author = "web_user") {
   return candidate;
 }
 
-// Optional helper to reset data (useful during development)
+
 export function resetMockData() {
   const s = seedCandidates();
   writeStore(s);

@@ -1,10 +1,9 @@
-// CandidatesPage.jsx
 import React, { useState } from "react";
 import CandidatesList from "../features/candidates/CandidatesList";
 import CandidatesKanban from "../features/candidates/CandidatesKanban";
 
 const CandidatesPage = () => {
-  const [view, setView] = useState("list"); // "list" | "kanban"
+  const [view, setView] = useState("list");
 
   return (
     <div

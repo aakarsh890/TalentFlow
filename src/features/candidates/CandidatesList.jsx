@@ -1,11 +1,9 @@
-// CandidatesList.jsx  (replace contents with this)
 import React, { useEffect, useState, useMemo, forwardRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCandidates } from "./candidatesSlice";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { Virtuoso } from "react-virtuoso";
 import { Link, useNavigate } from "react-router-dom";
-import CandidatesKanban from "./CandidatesKanban"; // expects to accept `embedded` prop
 
 const CandidatesList = () => {
   const dispatch = useDispatch();
@@ -32,15 +30,12 @@ const CandidatesList = () => {
 
   if (status === "loading") return <LoadingSpinner />;
 
-  // stage order (fall back to unique stages in data)
   const preferred = ["Applied", "Phone Screen", "Interview", "Offer", "Hired", "Rejected"];
   const allStages = Array.from(new Set(list.map((c) => c.stage).filter(Boolean)));
   const stages = preferred.concat(allStages.filter((s) => !preferred.includes(s)));
 
-  // List item sizing (used to compute overall height)
   const ITEM_SIZE = 96;
 
-  // Inner wrapper (keeps same structure as before)
   const Inner = forwardRef(({ style, children, ...rest }, ref) => {
     const merged = { ...style, boxSizing: "border-box", width: "100%", padding: "6px 0" };
     return (
@@ -181,7 +176,7 @@ const CandidatesList = () => {
     );
   };
 
-  // compute list height (avoid it reaching top of page)
+  // compute list height 
   const LIST_HEIGHT = Math.min(720, Math.max(300, (filtered.length || 1) * Math.min(ITEM_SIZE, 120)));
 
   return (

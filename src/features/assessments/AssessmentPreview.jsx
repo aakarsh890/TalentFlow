@@ -15,7 +15,6 @@ export default function AssessmentPreview({ assessment }) {
               {q.type === "short" && <input />}
               {q.type === "long" && <textarea />}
               {q.type === "numeric" && <input type="number" />}
-              {/* For single/multi choice you'd render choices */}
             </div>
           ))}
         </div>

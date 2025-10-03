@@ -1,27 +1,24 @@
-// src/api/assessmentsApi.js
-// Persist assessments (builders) and candidate responses in localStorage
 import { v4 as uuidv4 } from "uuid";
 
-const ASSESSMENTS_KEY = "assessments";             // array of assessment builder objects
-const RESPONSES_KEY = "assessment_responses_v1";   // object { assessmentId: [responses...] }
+const ASSESSMENTS_KEY = "assessments";             
+const RESPONSES_KEY = "assessment_responses_v1";   
 
 function delay(ms = 200) { return new Promise(res => setTimeout(res, ms)); }
 
-/** Get all assessments or by jobId */
+
 export async function getAssessments({ jobId = null } = {}) {
   await delay();
   const all = JSON.parse(localStorage.getItem(ASSESSMENTS_KEY) || "[]");
   return jobId ? all.filter(a => a.jobId === jobId) : all;
 }
 
-/** Get single assessment */
 export async function getAssessmentById(id) {
   await delay();
   const all = JSON.parse(localStorage.getItem(ASSESSMENTS_KEY) || "[]");
   return all.find(a => a.id === id) || null;
 }
 
-/** Create or update an assessment (builder) */
+
 export async function saveAssessment(assessment) {
   await delay();
   const all = JSON.parse(localStorage.getItem(ASSESSMENTS_KEY) || "[]");

@@ -1,4 +1,3 @@
-// AssessmentsPage.jsx
 import React, { useState } from "react";
 import AssessmentBuilder from "../features/assessments/AssessmentBuilder";
 import AssessmentPreview from "../features/assessments/AssessmentPreview";
@@ -29,7 +28,7 @@ const disabledStyle = {
 export default function AssessmentsPage({ candidateId }) {
   const assessments = useAssessmentsStore((s) => s.assessments);
   const [selectedAssessment, setSelectedAssessment] = useState(null);
-  const [mode, setMode] = useState("builder"); // builder | preview | form
+  const [mode, setMode] = useState("builder"); 
 
   return (
     <div

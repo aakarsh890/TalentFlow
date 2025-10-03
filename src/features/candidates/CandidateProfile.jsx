@@ -1,4 +1,3 @@
-// CandidateProfile.jsx  (replace file contents with this)
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCandidate } from "../../api/candidatesApi";
