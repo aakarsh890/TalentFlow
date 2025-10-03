@@ -10,10 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hello-pangea/dnd": "^18.0.1",
     "@reduxjs/toolkit": "^2.9.0",
     "clsx": "^2.1.1",
     "react": "^19.1.1",
-    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.63.0",
     "react-redux": "^9.2.0",
