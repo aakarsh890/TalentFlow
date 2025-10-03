@@ -3,7 +3,7 @@ import React, { useEffect, useState, useMemo, forwardRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCandidates } from "./candidatesSlice";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { FixedSizeList } from "react-window";
+import { Virtuoso } from "react-virtuoso";
 import { Link, useNavigate } from "react-router-dom";
 import CandidatesKanban from "./CandidatesKanban"; // expects to accept `embedded` prop
 
@@ -37,10 +37,10 @@ const CandidatesList = () => {
   const allStages = Array.from(new Set(list.map((c) => c.stage).filter(Boolean)));
   const stages = preferred.concat(allStages.filter((s) => !preferred.includes(s)));
 
-  // List item sizing
+  // List item sizing (used to compute overall height)
   const ITEM_SIZE = 96;
 
-  // Inner wrapper for react-window
+  // Inner wrapper (keeps same structure as before)
   const Inner = forwardRef(({ style, children, ...rest }, ref) => {
     const merged = { ...style, boxSizing: "border-box", width: "100%", padding: "6px 0" };
     return (
@@ -50,7 +50,7 @@ const CandidatesList = () => {
     );
   });
 
-  const Row = ({ index, style }) => {
+  const Row = ({ index, style = {} }) => {
     const candidate = filtered[index];
     if (!candidate) return null;
     const rowStyle = { ...style, width: "100%", left: 0, right: 0, boxSizing: "border-box" };
@@ -181,6 +181,7 @@ const CandidatesList = () => {
     );
   };
 
+  // compute list height (avoid it reaching top of page)
   const LIST_HEIGHT = Math.min(720, Math.max(300, (filtered.length || 1) * Math.min(ITEM_SIZE, 120)));
 
   return (
@@ -293,9 +294,14 @@ const CandidatesList = () => {
           {filtered.length === 0 ? (
             <div style={{ padding: 20, color: "#94a3b8" }}>No candidates found.</div>
           ) : (
-            <FixedSizeList height={LIST_HEIGHT} itemCount={filtered.length} itemSize={ITEM_SIZE} width={"100%"} innerElementType={Inner} style={{ overflowX: "hidden" }}>
-              {Row}
-            </FixedSizeList>
+            <div style={{ height: LIST_HEIGHT }}>
+              <Virtuoso
+                style={{ height: "100%" }}
+                totalCount={filtered.length}
+                itemContent={(index) => <Row index={index} />}
+                components={{ Scroller: Inner }}
+              />
+            </div>
           )}
         </div>
       </div>
