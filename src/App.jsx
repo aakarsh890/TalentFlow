@@ -1,6 +1,7 @@
 // App.jsx  (replace file contents)
 import React from "react";
 import { Provider } from "react-redux";
+import { HashRouter, Link } from "react-router-dom"; // ✅ Use HashRouter for safe deploys
 import store from "./store";
 import AppRouter from "./routes/AppRouter";
 // keep your global.css import if you want (won't conflict with inline styles)
@@ -62,50 +63,58 @@ const Navbar = () => {
 
       {/* Links */}
       <div style={linksWrap}>
-        <a
-          href="/jobs"
+        <Link
+          to="/jobs"
           style={linkBase}
           onMouseEnter={linkHover}
           onMouseLeave={linkLeave}
         >
           Jobs
-        </a>
-        <a
-          href="/candidates"
+        </Link>
+        <Link
+          to="/candidates"
           style={linkBase}
           onMouseEnter={linkHover}
           onMouseLeave={linkLeave}
         >
           Candidates
-        </a>
-        <a
-          href="/assessments"
+        </Link>
+        <Link
+          to="/assessments"
           style={linkBase}
           onMouseEnter={linkHover}
           onMouseLeave={linkLeave}
         >
           Assessments
-        </a>
+        </Link>
       </div>
     </nav>
   );
 };
 
 const AppLayout = ({ children }) => (
-  <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "linear-gradient(180deg,#07101a,#0b1220)", color: "#e6eef8" }}>
+  <div
+    style={{
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      background: "linear-gradient(180deg,#07101a,#0b1220)",
+      color: "#e6eef8",
+    }}
+  >
     <Navbar />
-    <main style={{ flex: 1 }}>
-      {children}
-    </main>
+    <main style={{ flex: 1 }}>{children}</main>
   </div>
 );
 
 function App() {
   return (
     <Provider store={store}>
-      <AppLayout>
-        <AppRouter />
-      </AppLayout>
+      <HashRouter>
+        <AppLayout>
+          <AppRouter />
+        </AppLayout>
+      </HashRouter>
     </Provider>
   );
 }
