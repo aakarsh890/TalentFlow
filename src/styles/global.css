@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------------------
+   Custom CSS Variables
+   ------------------- */
+:root {
+  --color-primary: #2563eb; /* Blue-600 */
+  --color-secondary: #6b7280; /* Gray-500 */
+  --color-danger: #dc2626; /* Red-600 */
+  --color-success: #16a34a; /* Green-600 */
+  --color-warning: #ca8a04; /* Yellow-600 */
+
+  --radius-md: 0.5rem;
+  --transition-fast: 0.2s ease-in-out;
+}
+
+/* -------------------
+   Base Styles
+   ------------------- */
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  background-color: #f9fafb;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  transition: color var(--transition-fast);
+}
+a:hover {
+  color: #f1f1f3; /* Darker blue on hover */
+}
+
+/* -------------------
+   Typography
+   ------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+small {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* -------------------
+   Buttons & Inputs
+   ------------------- */
+button {
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+input, textarea, select {
+  border-radius: var(--radius-md);
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 0.75rem;
+  transition: all var(--transition-fast);
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: white;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* -------------------
+   Utility Enhancements
+   ------------------- */
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.transition-fast {
+  transition: all var(--transition-fast);
+}
+
+.rounded-md {
+  border-radius: var(--radius-md);
+}
+
+/* -------------------
+   Dark Mode Support
+   ------------------- */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111827;
+    color: #f9fafb;
+  }
+  a {
+    color: #eff0f2;
+  }
+  a:hover {
+    color: #60a5fa;
+  }
+  input, textarea, select {
+    background-color: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+}

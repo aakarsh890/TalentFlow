@@ -1,0 +1,182 @@
+/* assessments.css — dark dashboard styling for your existing markup */
+
+/* page wrapper (if parent uses full background) */
+body, .builder-page {
+  background: linear-gradient(180deg, #071020 0%, #081223 100%);
+  color: #e6eef8;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Top-level builder container */
+.builder,
+.assessment-form,
+.preview {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 22px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: 0 14px 40px rgba(2,6,23,0.65);
+  color: #e6eef8;
+  box-sizing: border-box;
+}
+
+/* Section blocks inside builder */
+.builder .section,
+.preview .section,
+.assessment-form .section {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #0f1724, #0b1220);
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.45);
+}
+
+/* Titles */
+.builder h2,
+.preview h2,
+.assessment-form h3,
+.builder h1 {
+  color: #f8fafc;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.builder h1 { font-size: 28px; }
+.builder h2 { font-size: 20px; }
+.builder .section input[type="text"],
+.builder input[type="text"],
+.builder input,
+.assessment-form input,
+.assessment-form textarea,
+.preview input,
+.preview textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: #0f1724;
+  color: #e6eef8;
+  box-sizing: border-box;
+  outline: none;
+  transition: box-shadow .12s ease, transform .08s ease;
+}
+
+.builder input:focus,
+.assessment-form input:focus,
+.preview input:focus,
+.builder textarea:focus,
+.assessment-form textarea:focus,
+.preview textarea:focus {
+  box-shadow: 0 6px 16px rgba(59,130,246,0.12);
+  transform: translateY(-1px);
+  border-color: rgba(59,130,246,0.6);
+}
+
+/* Question row */
+.question {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.01);
+}
+
+/* Selects */
+.question select,
+.builder select,
+.assessment-form select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #0f1724;
+  color: #e6eef8;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Buttons: primary & secondary */
+.btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.03);
+  color: #e6eef8;
+  transition: transform .08s ease, box-shadow .08s ease;
+}
+
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,0.45); }
+
+/* Primary action */
+.btn.primary {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 22px rgba(37,99,235,0.16);
+}
+
+/* Danger */
+.btn.danger {
+  background: rgba(255,80,80,0.06);
+  color: #ffbaba;
+  border: 1px solid rgba(255,80,80,0.08);
+}
+
+/* Small toolbar for add/save */
+.builder .toolbar,
+.assessment-form .toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* Saved assessments list */
+.existing-list {
+  margin-top: 22px;
+}
+.existing-list .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.01);
+  border: 1px solid rgba(255,255,255,0.02);
+  color: #e6eef8;
+}
+.existing-list .item .title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 72%;
+  font-weight: 600;
+  color: #cfe8ff;
+}
+
+/* Preview card */
+.preview-card {
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.01);
+  margin-top: 8px;
+}
+
+/* Form submit */
+.assessment-form .submit-row {
+  margin-top: 14px;
+}
+
+/* small responsive tweaks */
+@media (max-width: 760px) {
+  .builder,
+  .assessment-form,
+  .preview { padding: 14px; margin: 12px; }
+  .question { flex-direction: column; align-items: stretch; }
+  .existing-list .item .title { max-width: 56%; }
+}
